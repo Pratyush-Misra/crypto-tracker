@@ -1,6 +1,8 @@
 pipeline {
     agent any
-    
+    tools {
+        terraform 'Terraform'
+    }
     stages {
 
         stage('Checkout SCM') {
@@ -20,7 +22,6 @@ pipeline {
                 echo "Terraform action is –> ${action}"
                 sh ("terraform ${action} –auto-approve")
             }
-
         }
     }
 }

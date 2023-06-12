@@ -3,6 +3,12 @@ pipeline {
     tools {
         terraform 'Terraform'
     }
+
+    enviroment {
+        AWS_ACCESS_KEY_ID = credentials('AWS_ACCESS_KEY_ID')
+        AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')    
+    }
+
     stages {
 
         stage('Checkout SCM') {
@@ -14,10 +20,11 @@ pipeline {
         stage ("init") {
             steps {
                 sh ("terraform init")
+                sh ("terraform plan")
             }
         }
 
-        stage ("terraform Action") {
+        stage ("terraform apply") {
             steps {
                 sh ("terraform apply -auto-approve")
             }

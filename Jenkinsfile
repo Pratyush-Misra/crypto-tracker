@@ -7,7 +7,7 @@ pipeline {
 
         stage('Checkout SCM') {
             steps{
-                git branch: 'infra', url: "https://github.com/Pratyush-Misra/crypto-tracker.git"
+                git branch: 'dev', url: "https://github.com/Pratyush-Misra/crypto-tracker.git"
             }
         }
 

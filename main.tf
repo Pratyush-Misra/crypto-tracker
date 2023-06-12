@@ -4,11 +4,6 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 4.0"
     }
-
-    docker = {
-      source  = "kreuzwerker/docker"
-      version = "~> 3.0.2"
-    }
   }
 }
 
@@ -16,13 +11,17 @@ provider "aws" {
     region = "ap-south-1"
 }
 
-provider "docker" {
-  host = "unix:///var/run/docker.sock"
-}
-
 resource "aws_instance" "app-ec2" {
     ami = "ami-049a62eb90480f276"
     instance_type = "t2.micro"
+
+    user_data = <<-EOF
+        #!/bin/bash
+        sudo yum update -y
+        sudo yum install docker -y
+        sudo service docker start
+        sudo usermod -a -G docker ec2-user
+    EOF
 
     tags = {
         Name = "app-ec2"
@@ -80,8 +79,4 @@ resource "aws_default_security_group" "app-ec2-sg" {
   tags = {
     Name = "app-ec2-sg"
   }
-}
-
-resource "docker_image" "ubuntu" {
-  name = "ubuntu:latest"
 }

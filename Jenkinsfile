@@ -20,7 +20,7 @@ pipeline {
         stage ("init") {
             steps {
                 sh ("terraform init")
-                sh ("terraform plan")
+                // sh ("terraform plan")
             }
         }
 

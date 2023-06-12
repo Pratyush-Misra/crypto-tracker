@@ -81,3 +81,7 @@ resource "aws_default_security_group" "app-ec2-sg" {
     Name = "app-ec2-sg"
   }
 }
+
+resource "docker_image" "ubuntu" {
+  name = "ubuntu:latest"
+}

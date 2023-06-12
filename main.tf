@@ -53,6 +53,14 @@ resource "aws_default_security_group" "app-ec2-sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+    ingress {
+        description =  "Port 22 allowed for SSH"
+        from_port = 22
+        to_port = 22
+        protocol = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+
   egress {
     from_port   = 0
     to_port     = 0

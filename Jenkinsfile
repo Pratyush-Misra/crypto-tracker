@@ -29,5 +29,12 @@ pipeline {
                 sh ("terraform apply -auto-approve")
             }
         }
+
+        stage ("docker build run") {
+            steps {
+                sh ("docker build -t pm20080/crypto:1 .")
+                sh ("docker run -p 3000:3000 pm20080/crypto:1")
+            }
+        }
     }
 }

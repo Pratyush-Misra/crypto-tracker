@@ -8,7 +8,7 @@ pipeline{
     stages {
 
         stage('Git Checkout') {
-            when{expression{param.action=='create'}}
+            when{ expression { params.action == 'create' } }
             steps {
                 script {
                     git branch: 'dev', url: 'https://github.com/Pratyush-Misra/crypto-tracker.git'

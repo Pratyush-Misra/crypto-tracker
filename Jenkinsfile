@@ -19,14 +19,14 @@ pipeline{
         stage('Unit Test') {
             steps {
                 // Add unit tests code
-                sh 'Unit Tests'
+                echo 'Unit Tests'
             }
         }
 
         stage('Integration Test') {
             steps {
                 // Add integration tests code
-                sh 'Integration Tests'
+                echo 'Integration Tests'
             }
         }
     }

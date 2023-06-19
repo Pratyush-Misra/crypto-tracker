@@ -1,18 +1,21 @@
+@Library("jenkins-shared-library")
+
 pipeline{
     agent any
     
-    parameters {
-        choice(name: 'action', choices: 'create\ndelete', description: 'Choose create/destroy')
-    }
+    // parameters {
+    //     choice(name: 'action', choices: 'create\ndelete', description: 'Choose create/destroy')
+    // }
 
     stages {
 
         stage('Git Checkout') {
-            when{ expression { params.action == 'create' } }
+            // when{ expression { params.action == 'create' } }
             steps {
-                script {
-                    git branch: 'dev', url: 'https://github.com/Pratyush-Misra/crypto-tracker.git'
-                }
+                gitCheckout(
+                    branch: "dev",
+                    url: "https://github.com/Pratyush-Misra/crypto-tracker.git"
+                )
             }
         }
 

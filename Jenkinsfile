@@ -16,18 +16,18 @@ pipeline{
             }
         }
 
-        stage('Unit Test') {
-            steps {
-                // Add unit tests code
-                echo 'Unit Tests'
-            }
-        }
+        // stage('Unit Test') {
+        //     steps {
+        //         // Add unit tests code
+        //         echo 'Unit Tests'
+        //     }
+        // }
 
-        stage('Integration Test') {
-            steps {
-                // Add integration tests code
-                echo 'Integration Tests'
-            }
-        }
+        // stage('Integration Test') {
+        //     steps {
+        //         // Add integration tests code
+        //         echo 'Integration Tests'
+        //     }
+        // }
     }
 }
